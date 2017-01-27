@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login and Registration</title>
+  </head>
+  <body>
+{# MESSAGES TO USER from Django Documentstion page https://docs.djangoproject.com/en/1.10/ref/contrib/messages/#}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+    <h4>Registration</h4>
+    <form action="/register" method="post">
+      {% csrf_token %}
+      <label for="first_name">First Name: </label>
+      <input type="text" name="first_name">
+      <label for="last_name">Last Name: </label>
+      <input type="text" name="last_name">
+      <label for="email">Email: </label>
+      <input type="text" name="email">
+      <label for="password">Password: </label>
+      <input type="password" name="password">
+      <label for="passwordconf">Confirm PW: </label>
+      <input type="password" name="passwordconf">
+      <input type="submit" value="Register">
+    </form>
+    <h4>Login</h4>
+    <form action="/login" method="post">
+      <input type="hidden" name="csrfmiddlewaretoken" value = "7obqooc@=7i^6_0*hb(6w#*2h$7snngdouy#nw7suxb412pem6"
+    <label for="email">Email: </label>
+    <input type="text" name="email">
+    <label for="password">Password: </label>
+    <input type="password" name="password">
+    <input type="submit" value="Login">
+  </form>
+  </body>
+</html>
